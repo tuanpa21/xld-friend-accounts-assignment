@@ -3,9 +3,10 @@ import { nanoid } from 'nanoid'
 import { Col, Row } from 'reactstrap'
 import FriendAccountCard, { FriendAccount } from '../components/FriendAccountCard'
 import FriendAccountForm, { FormType } from '../components/FriendAccountForm'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 function FriendAccounts() {
-  const [friendAccounts, setFriendAccounts] = useState<FriendAccount[]>([])
+  const [friendAccounts, setFriendAccounts] = useLocalStorage<FriendAccount[]>('friends', [])
   const [selectedAccount, setSelectedAccount] = useState<FriendAccount | null>(null)
 
   const onFormSubmit = (data: FormType) => {
