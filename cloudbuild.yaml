@@ -1,0 +1,11 @@
+# cloudbuild.yaml
+steps:
+  - name: node:14.17.3
+    entrypoint: yarn
+    args: [""]
+  - name: node:14.17.3
+    entrypoint: yarn
+    args: ["build"]
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: ["app", "deploy"]
+timeout: "1600s"
